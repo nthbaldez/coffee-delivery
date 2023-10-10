@@ -19,4 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
   }
 
+  h1 {
+    color: ${(props) => props.theme['gray-700']}
+  }
 `
