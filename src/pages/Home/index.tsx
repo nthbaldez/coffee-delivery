@@ -1,12 +1,12 @@
-import { Timer } from 'phosphor-react'
+import { ShoppingCart, Timer } from 'phosphor-react'
 import {
-  ColumnContainer,
   DefinitionContainer,
   InfoContainer,
   MainContainer,
   SpanContainer,
 } from './styles'
-import ProductsList from './components/ProductsList'
+
+import ProductsMainContainer from './components/ProductsMainContainer'
 
 export default function Home() {
   return (
@@ -20,34 +20,38 @@ export default function Home() {
           </p>
 
           <DefinitionContainer>
-            <ColumnContainer>
+            <div>
               <div>
                 <SpanContainer featureColor="orange">
-                  <Timer size={16} weight="fill" color="white" />
+                  <ShoppingCart size={16} weight="fill" color="white" />
                 </SpanContainer>
                 Compra simples e segura
               </div>
+            </div>
+            <div>
               <div>
                 <SpanContainer featureColor="yellow">
                   <Timer size={16} weight="fill" color="white" />
                 </SpanContainer>
                 Entrega rápida e rastreada
               </div>
-            </ColumnContainer>
-            <ColumnContainer>
+            </div>
+            <div>
               <div>
                 <SpanContainer featureColor="gray">
                   <Timer size={16} weight="fill" color="white" />
                 </SpanContainer>
                 Embalagem mantém o café intacto
               </div>
+            </div>
+            <div>
               <div>
                 <SpanContainer featureColor="purple">
                   <Timer size={16} weight="fill" color="white" />
                 </SpanContainer>
                 O café chega fresquinho até você
               </div>
-            </ColumnContainer>
+            </div>
           </DefinitionContainer>
         </InfoContainer>
 
@@ -55,7 +59,7 @@ export default function Home() {
           <img src="/public/image.png" alt="" />
         </div>
       </MainContainer>
-      <ProductsList />
+      <ProductsMainContainer />
     </>
   )
 }

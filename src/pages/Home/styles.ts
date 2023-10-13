@@ -42,32 +42,18 @@ interface FeatureProps {
 
 export const DefinitionContainer = styled.div`
   margin-top: 66px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-`
-export const ColumnContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  color: ${(props) => props.theme['gray-700']};
-  gap: 12px;
-
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
-
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 1;
     gap: 12px;
+    color: ${(props) => props.theme['gray-700']};
   }
 `
+
 export const SpanContainer = styled.span<FeatureProps>`
   display: flex;
   align-items: center;
