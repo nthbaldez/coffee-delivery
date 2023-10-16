@@ -15,7 +15,7 @@ export const Card = styled.div`
   img {
     width: 120px;
     height: 120px;
-    margin-top: -60px;
+    margin-top: -50px;
   }
 
   span {
@@ -45,6 +45,7 @@ export const Card = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-top: 2rem;
 
     p {
       display: flex;
