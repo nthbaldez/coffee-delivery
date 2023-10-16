@@ -8,6 +8,19 @@ export default function ProductsMainContainer() {
 
       <ProductsList>
         <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </ProductsList>
     </ProductsContainer>
   )

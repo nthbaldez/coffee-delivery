@@ -7,7 +7,7 @@ export const ProductsContainer = styled.div`
 export const ProductsList = styled.div`
   margin-top: 3.5rem;
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
 `

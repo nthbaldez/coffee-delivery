@@ -28,9 +28,40 @@ export const Card = styled.div`
     font-weight: 700;
   }
 
+  h3 {
+    color: ${(props) => props.theme['gray-800']};
+  }
+
+  p {
+    color: ${(props) => props.theme['gray-600']};
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
   footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+
+    p {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      span {
+        color: ${(props) => props.theme['gray-800']};
+        font-family: 'Baloo 2';
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 130%;
+        background: none;
+      }
+    }
   }
 `
