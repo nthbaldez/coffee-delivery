@@ -1,14 +1,30 @@
 import { ShoppingCart } from 'phosphor-react'
 import { Card } from './styles'
 
-export default function ProductCard() {
+type CoffeeProps = {
+  id: string
+  name: string
+  description: string
+  price: number
+  image: string
+}
+
+export default function ProductCard({
+  id,
+  name,
+  description,
+  price,
+  image,
+}: CoffeeProps) {
   return (
     <Card>
-      <img src="/public/coffees/Type=Americano.png" alt="" />
+      <img src={image} alt="" />
 
-      <span>Tradicional</span>
-      <h3>Expresso Tradicional</h3>
-      <p>O tradicional café feito com água quente e grãos moídos.</p>
+      <div>
+        <span>Tradicional</span>
+      </div>
+      <h3>{name}</h3>
+      <p>{description}</p>
 
       <footer>
         <p>
