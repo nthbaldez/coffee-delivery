@@ -4,7 +4,7 @@ import { Card } from './styles'
 export default function ProductCard() {
   return (
     <Card>
-      <img src="/public/coffees/type=expresso.png" alt="" />
+      <img src="/public/coffees/Type=Americano.png" alt="" />
 
       <span>Tradicional</span>
       <h3>Expresso Tradicional</h3>
