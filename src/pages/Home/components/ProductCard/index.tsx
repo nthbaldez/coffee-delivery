@@ -1,5 +1,7 @@
 import { ShoppingCart } from 'phosphor-react'
 import { Card } from './styles'
+import AddOrDecrementButton from './AddOrDecrementButton'
+import { formatPrice } from '../../../../utils/formatPrice'
 
 type CoffeeProps = {
   id: string
@@ -16,6 +18,8 @@ export default function ProductCard({
   price,
   image,
 }: CoffeeProps) {
+  const priceFormatted = formatPrice(price)
+
   return (
     <Card>
       <img src={image} alt="" />
@@ -28,18 +32,10 @@ export default function ProductCard({
 
       <footer>
         <p>
-          R$ <span>9,90</span>
+          R$ <span>{priceFormatted}</span>
         </p>
 
-        <div>
-          <button className="select-button" id="decrement">
-            -
-          </button>
-          <span>1</span>
-          <button className="select-button" id="increment">
-            +
-          </button>
-        </div>
+        <AddOrDecrementButton />
 
         <button>
           <ShoppingCart size={32} weight="fill" color="white" />

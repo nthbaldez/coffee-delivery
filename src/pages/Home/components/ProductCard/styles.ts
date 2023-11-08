@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Card = styled.div`
-  max-width: 16rem;
+  max-width: 22rem;
   height: 19rem;
   border-radius: 6px 36px;
 
@@ -46,6 +46,7 @@ export const Card = styled.div`
     align-items: center;
     width: 100%;
     margin-top: 2rem;
+    gap: 4px;
 
     p {
       display: flex;
@@ -62,6 +63,21 @@ export const Card = styled.div`
         font-weight: 800;
         line-height: 130%;
         background: none;
+      }
+    }
+
+    > button {
+      background: ${(props) => props.theme['purple-700']};
+      display: inline-flex;
+      padding: 8px;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 8px;
+
+      &:hover {
+        background: ${(props) => props.theme['purple-600']};
+        cursor: pointer;
       }
     }
   }

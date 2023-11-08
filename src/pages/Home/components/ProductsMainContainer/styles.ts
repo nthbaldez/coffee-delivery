@@ -7,9 +7,8 @@ export const ProductsContainer = styled.div`
 
 export const ProductsList = styled.div`
   margin-top: 3.5rem;
-  display: flex;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
   gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
 `
