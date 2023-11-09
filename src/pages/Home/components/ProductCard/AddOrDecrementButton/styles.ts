@@ -23,6 +23,10 @@ export const AddOrDecrementButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 4px;
+
+    &:hover {
+      color: ${(props) => props.theme['purple-700']};
+    }
   }
 
   p {

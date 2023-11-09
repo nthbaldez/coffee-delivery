@@ -1,3 +1,4 @@
+import { formatPrice } from '../../utils/formatPrice'
 import AddOrDecrementButton from '../Home/components/ProductCard/AddOrDecrementButton'
 import {
   CoffeeSelectionContainer,
@@ -6,7 +7,34 @@ import {
   HeaderMain,
   FormContainer,
   ListProducts,
+  ButtonsContainer,
+  CartType,
+  ButtonRemoveItem,
+  ItemsTotal,
+  Total,
+  TotalDefault,
 } from './styles'
+
+import { FiTrash2 } from 'react-icons/fi'
+
+const products = [
+  {
+    id: '1',
+    name: 'Expresso Tradicional',
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    price: 9900,
+    types: ['Tradicional'],
+    image: '/public/coffees/Type=Expresso.png',
+  },
+  {
+    id: '2',
+    name: 'Expresso Americano',
+    description: 'Expresso diluído, menos intenso que o tradicional',
+    price: 9900,
+    types: ['Tradicional'],
+    image: '/public/coffees/Type=Americano.png',
+  },
+]
 
 export default function Checkout() {
   return (
@@ -69,15 +97,40 @@ export default function Checkout() {
         <h3>Cafés selecionados</h3>
 
         <ListProducts>
-          <div>
-            <img src="/public/coffees/Type=Americano.png" alt="" />
+          {products.map((product) => (
+            <CartType key={product.id}>
+              <img src={product.image} alt={product.name} />
 
-            <div>
-              <p>Expresso Tradicional</p>
+              <ButtonsContainer>
+                <p>{product.name}</p>
 
-              <AddOrDecrementButton />
-            </div>
-          </div>
+                <div>
+                  <AddOrDecrementButton />
+
+                  <ButtonRemoveItem>
+                    <FiTrash2 />
+                    <p>Remover</p>
+                  </ButtonRemoveItem>
+                </div>
+              </ButtonsContainer>
+
+              <span>{formatPrice(product.price)}</span>
+            </CartType>
+          ))}
+          <ItemsTotal>
+            <TotalDefault>
+              <p>Total de itens</p>
+              <span>R$ 29,90</span>
+            </TotalDefault>
+            <TotalDefault>
+              <p>Total de itens</p>
+              <span>R$ 29,90</span>
+            </TotalDefault>
+            <Total>
+              <p>Total</p>
+              <span>R$ 29,90</span>
+            </Total>
+          </ItemsTotal>
         </ListProducts>
       </CoffeeSelectionContainer>
     </Wrapper>
