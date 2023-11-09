@@ -1,5 +1,6 @@
 import { formatPrice } from '../../utils/formatPrice'
 import AddOrDecrementButton from '../Home/components/ProductCard/AddOrDecrementButton'
+import { ConfirmButton } from '../Home/components/ProductCard/AddOrDecrementButton/styles'
 import {
   CoffeeSelectionContainer,
   MainContainer,
@@ -123,14 +124,15 @@ export default function Checkout() {
               <span>R$ 29,90</span>
             </TotalDefault>
             <TotalDefault>
-              <p>Total de itens</p>
-              <span>R$ 29,90</span>
+              <p>Entrega</p>
+              <span>R$ 3,50</span>
             </TotalDefault>
             <Total>
               <p>Total</p>
               <span>R$ 29,90</span>
             </Total>
           </ItemsTotal>
+          <ConfirmButton>Confirmar pedido</ConfirmButton>
         </ListProducts>
       </CoffeeSelectionContainer>
     </Wrapper>

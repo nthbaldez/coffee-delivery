@@ -39,3 +39,23 @@ export const AddOrDecrementButtonContainer = styled.div`
     line-height: 130%;
   }
 `
+
+export const ConfirmButton = styled.button`
+  width: 100%;
+  display: flex;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  border-radius: 6px;
+  background: ${(props) => props.theme['yellow-500']};
+  border: none;
+
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme['yellow-700']};
+  }
+`
