@@ -1,6 +1,7 @@
+import AddOrDecrementButton from './AddOrDecrementButton'
+
 import { ShoppingCart } from 'phosphor-react'
 import { Card } from './styles'
-import AddOrDecrementButton from './AddOrDecrementButton'
 import { formatPrice } from '../../../../utils/formatPrice'
 
 type CoffeeProps = {
@@ -9,6 +10,7 @@ type CoffeeProps = {
   description: string
   price: number
   image: string
+  types: string[]
 }
 
 export default function ProductCard({
@@ -17,22 +19,27 @@ export default function ProductCard({
   description,
   price,
   image,
+  types,
 }: CoffeeProps) {
   const priceFormatted = formatPrice(price)
 
+  console.log(types)
+
   return (
     <Card>
-      <img src={image} alt="" />
+      <img src={image} alt={name} />
 
       <div>
-        <span>Tradicional</span>
+        {types.map((type, index) => (
+          <span key={index}>{type}</span>
+        ))}
       </div>
       <h3>{name}</h3>
       <p>{description}</p>
 
       <footer>
         <p>
-          R$ <span>{priceFormatted}</span>
+          <span>{priceFormatted}</span>
         </p>
 
         <AddOrDecrementButton />

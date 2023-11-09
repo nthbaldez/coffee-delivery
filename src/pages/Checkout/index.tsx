@@ -1,9 +1,11 @@
+import AddOrDecrementButton from '../Home/components/ProductCard/AddOrDecrementButton'
 import {
   CoffeeSelectionContainer,
   MainContainer,
   Wrapper,
   HeaderMain,
   FormContainer,
+  ListProducts,
 } from './styles'
 
 export default function Checkout() {
@@ -64,11 +66,19 @@ export default function Checkout() {
       </MainContainer>
 
       <CoffeeSelectionContainer>
-        <header>
-          <h3>Cafés selecionados</h3>
-        </header>
+        <h3>Cafés selecionados</h3>
 
-        <div></div>
+        <ListProducts>
+          <div>
+            <img src="/public/coffees/Type=Americano.png" alt="" />
+
+            <div>
+              <p>Expresso Tradicional</p>
+
+              <AddOrDecrementButton />
+            </div>
+          </div>
+        </ListProducts>
       </CoffeeSelectionContainer>
     </Wrapper>
   )

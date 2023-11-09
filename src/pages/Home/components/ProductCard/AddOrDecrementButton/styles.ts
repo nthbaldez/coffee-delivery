@@ -6,7 +6,7 @@ export const AddOrDecrementButtonContainer = styled.div`
   padding: 8px;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
   flex-shrink: 0;
 
   background: ${(props) => props.theme['gray-400']};
@@ -18,14 +18,14 @@ export const AddOrDecrementButtonContainer = styled.div`
     border: none;
     color: ${(props) => props.theme['purple-600']};
 
-    display: inline-flex;
+    display: flex;
     height: 32px;
     justify-content: center;
     align-items: center;
     gap: 4px;
   }
 
-  > span {
+  p {
     background: ${(props) => props.theme['gray-400']};
     color: ${(props) => props.theme['gray-900']};
     font-family: 'Roboto';

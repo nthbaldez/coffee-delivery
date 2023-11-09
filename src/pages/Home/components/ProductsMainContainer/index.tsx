@@ -10,6 +10,7 @@ type CoffeeProps = {
   description: string
   price: number
   image: string
+  types: string[]
 }
 
 export default function ProductsMainContainer() {

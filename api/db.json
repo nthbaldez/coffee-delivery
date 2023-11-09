@@ -5,7 +5,7 @@
       "name": "Expresso Tradicional",
       "description": "O tradicional café feito com água quente e grãos moídos",
       "price": 9900,
-      "type": ["Tradicional"],
+      "types": ["Tradicional"],
       "image": "/public/coffees/Type=Expresso.png"
     },
     {
@@ -13,7 +13,7 @@
       "name": "Expresso Americano",
       "description": "Expresso diluído, menos intenso que o tradicional",
       "price": 9900,
-      "type": ["Tradicional"],
+      "types": ["Tradicional"],
       "image": "/public/coffees/Type=Americano.png"
     },
     {
@@ -21,7 +21,7 @@
       "name": "Expresso Cremoso",
       "description": "Café expresso tradicional com espuma cremosa",
       "price": 9900,
-      "type": ["Tradicional"],
+      "types": ["Tradicional"],
       "image": "/public/coffees/Type=Expresso Cremoso.png"
     },
     {
@@ -29,7 +29,7 @@
       "name": "Expresso Gelado",
       "description": "Bebida preparada com café expresso e cubos de gelo",
       "price": 9900,
-      "type": ["Tradicional"],
+      "types": ["Tradicional", "Gelado"],
       "image": "/public/coffees/Type=Café Gelado.png"
     },
     {
@@ -37,7 +37,7 @@
       "name": "Café com Leite",
       "description": "Meio a meio de expresso tradicional com leite vaporizado",
       "price": 9900,
-      "type": ["Tradicional", "Com leite"],
+      "types": ["Tradicional", "Com leite"],
       "image": "/public/coffees/Type=Café com Leite.png"
     },
     {
@@ -45,7 +45,7 @@
       "name": "Latte",
       "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
       "price": 9900,
-      "type": ["Tradicional", "Com leite"],
+      "types": ["Tradicional", "Com leite"],
       "image": "/public/coffees/Type=Latte.png"
     },
     {
@@ -53,7 +53,7 @@
       "name": "Capuccino",
       "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
       "price": 9900,
-      "type": ["Tradicional", "Com leite"],
+      "types": ["Tradicional", "Com leite"],
       "image": "/public/coffees/Type=Capuccino.png"
     },
     {
@@ -61,7 +61,7 @@
       "name": "Macchiato",
       "description": "Café expresso misturado com um pouco de leite quente e espuma",
       "price": 9900,
-      "type": ["Tradicional", "Com leite"],
+      "types": ["Tradicional", "Com leite"],
       "image": "/public/coffees/Type=Macchiato.png"
 
     },
@@ -70,7 +70,7 @@
       "name": "Mocaccino",
       "description": "Café expresso com calda de chocolate, pouco leite e espuma",
       "price": 9900,
-      "type": ["Tradicional", "Com leite"],
+      "types": ["Tradicional", "Com leite"],
       "image": "/public/coffees/Type=Mochaccino.png"
 
     },
@@ -79,7 +79,7 @@
       "name": "Chocolate quente",
       "description": "Bebida feita com chocolate dissolvido no leite quente e café",
       "price": 9900,
-      "type": ["Tradicional", "Com leite"],
+      "types": ["Tradicional", "Com leite"],
       "image": "/public/coffees/Type=Chocolate Quente.png"
     },
     {
@@ -87,7 +87,7 @@
       "name": "Cubano",
       "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
       "price": 9900,
-      "type": ["Especial", "Alcóolico", "Gelado"],
+      "types": ["Especial", "Alcóolico", "Gelado"],
       "image": "/public/coffees/Type=Cubano.png"
     },
     {
@@ -95,7 +95,7 @@
       "name": "Havaiano",
       "description": "Bebida adocicada preparada com café e leite de coco",
       "price": 9900,
-      "type": ["Especial"],
+      "types": ["Especial"],
       "image": "/public/coffees/Type=Havaiano.png"    
     },
     {
@@ -103,7 +103,7 @@
       "name": "Árabe",
       "description": "Bebida preparada com grãos de café árabe e especiarias",
       "price": 9900,
-      "type": ["Especial"],
+      "types": ["Especial"],
       "image": "/public/coffees/Type=Árabe.png"
     },
     {
@@ -111,7 +111,7 @@
       "name": "Irlândes",
       "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       "price": 9900,
-      "type": ["Especial", "Alcóolico"],
+      "types": ["Especial", "Alcóolico"],
       "image": "/public/coffees/Type=Irlandês.png"
     }
   ]

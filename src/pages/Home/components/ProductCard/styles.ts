@@ -18,14 +18,21 @@ export const Card = styled.div`
     margin-top: -50px;
   }
 
-  span {
-    background: ${(props) => props.theme['yellow-200']};
-    color: ${(props) => props.theme['yellow-700']};
-    padding: 4px 8px;
-    border-radius: 100px;
-    font-size: 10px;
-    text-transform: uppercase;
-    font-weight: 700;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+
+    span {
+      background: ${(props) => props.theme['yellow-200']};
+      color: ${(props) => props.theme['yellow-700']};
+      padding: 4px 8px;
+      border-radius: 100px;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
   }
 
   h3 {

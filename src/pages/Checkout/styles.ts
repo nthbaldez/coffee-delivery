@@ -19,17 +19,13 @@ export const MainContainer = styled.div`
   width: 100%;
   border-radius: 6px;
 
-  header {
-    margin-top: 1.38rem;
-
-    h3 {
-      font-family: 'Baloo 2';
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 130%;
-      color: ${(props) => props.theme['gray-800']};
-    }
+  h3 {
+    font-family: 'Baloo 2';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    color: ${(props) => props.theme['gray-800']};
   }
 
   main {
@@ -45,21 +41,14 @@ export const CoffeeSelectionContainer = styled.aside`
   align-items: flex-start;
   justify-content: flex-start;
   min-width: 28rem;
-  padding: 16px 24px;
 
-  background: ${(props) => props.theme['gray-200']};
-
-  header {
-    margin-top: 1.38rem;
-
-    h3 {
-      font-family: 'Baloo 2';
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 130%;
-      color: ${(props) => props.theme['gray-800']};
-    }
+  h3 {
+    font-family: 'Baloo 2';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    color: ${(props) => props.theme['gray-800']};
   }
 `
 
@@ -94,4 +83,33 @@ export const HeaderMain = styled.div`
 export const FormContainer = styled.form`
   display: grid;
   grid-template-columns: 1fr;
+`
+
+export const ListProducts = styled.div`
+  background: ${(props) => props.theme['gray-200']};
+
+  display: flex;
+  width: 448px;
+  padding: 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 1rem;
+  border-radius: 6px 44px;
+
+  div {
+    display: flex;
+    padding: 8px 4px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+
+    img {
+      display: flex;
+      width: 64px;
+      height: 64px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `
