@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { formatPrice } from '../../utils/formatPrice'
 import AddOrDecrementButton from '../Home/components/ProductCard/AddOrDecrementButton'
 import {
@@ -14,30 +15,62 @@ import {
   Total,
   TotalDefault,
   ConfirmButton,
+  CepInput,
+  StreetInput,
+  NumberInput,
+  ComplementInput,
+  BairroInput,
+  CityInput,
+  UFSelect,
 } from './styles'
 
 import { FiTrash2 } from 'react-icons/fi'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
-const products = [
-  {
-    id: '1',
-    name: 'Expresso Tradicional',
-    description: 'O tradicional café feito com água quente e grãos moídos',
-    price: 9900,
-    types: ['Tradicional'],
-    image: '/public/coffees/Type=Expresso.png',
-  },
-  {
-    id: '2',
-    name: 'Expresso Americano',
-    description: 'Expresso diluído, menos intenso que o tradicional',
-    price: 9900,
-    types: ['Tradicional'],
-    image: '/public/coffees/Type=Americano.png',
-  },
-]
+interface Product {
+  name: string
+  price: number
+  description: string
+  id: string
+  image: string
+  types: string[]
+}
+
+interface ProductInCart extends Product {
+  quantity: number
+}
 
 export default function Checkout() {
+  const { value, updateLocalStorage } = useLocalStorage<ProductInCart[]>(
+    'cart-items',
+    [],
+  )
+
+  const [items, setItems] = useState<ProductInCart[]>([])
+
+  const calculateTotalValue = (items: ProductInCart[]) => {
+    return items.reduce(
+      (total, item) => (total += item.price * item.quantity),
+      0,
+    )
+  }
+
+  useEffect(() => {
+    setItems(value)
+  }, [value])
+
+  const cartTotalValue = formatPrice(calculateTotalValue(value))
+  const deliveryFee = 3500
+  const cartTotalWithDelivery = formatPrice(
+    calculateTotalValue(value) + deliveryFee,
+  )
+
+  function handleDelete(id: string) {
+    const itemsList = items.filter((item) => item.id !== id)
+    updateLocalStorage(itemsList)
+    setItems(itemsList)
+  }
+
   return (
     <Wrapper>
       <MainContainer>
@@ -55,41 +88,48 @@ export default function Checkout() {
           </HeaderMain>
 
           <FormContainer action="">
-            <input type="text" placeholder="CEP" />
-            <input type="text" placeholder="Rua" />
-            <input type="text" placeholder="Número" />
-            <input type="text" placeholder="Complemento" />
-            <input type="text" placeholder="Bairro" />
-            <input type="text" placeholder="Cidade" />
-            <select name="estado">
-              <option value="AC">Acre (AC)</option>
-              <option value="AL">Alagoas (AL)</option>
-              <option value="AP">Amapá (AP)</option>
-              <option value="AM">Amazonas (AM)</option>
-              <option value="BA">Bahia (BA)</option>
-              <option value="CE">Ceará (CE)</option>
-              <option value="DF">Distrito Federal (DF)</option>
-              <option value="ES">Espírito Santo (ES)</option>
-              <option value="GO">Goiás (GO)</option>
-              <option value="MA">Maranhão (MA)</option>
-              <option value="MT">Mato Grosso (MT)</option>
-              <option value="MS">Mato Grosso do Sul (MS)</option>
-              <option value="MG">Minas Gerais (MG)</option>
-              <option value="PA">Pará (PA)</option>
-              <option value="PB">Paraíba (PB)</option>
-              <option value="PR">Paraná (PR)</option>
-              <option value="PE">Pernambuco (PE)</option>
-              <option value="PI">Piauí (PI)</option>
-              <option value="RJ">Rio de Janeiro (RJ)</option>
-              <option value="RN">Rio Grande do Norte (RN)</option>
-              <option value="RS">Rio Grande do Sul (RS)</option>
-              <option value="RO">Rondônia (RO)</option>
-              <option value="RR">Roraima (RR)</option>
-              <option value="SC">Santa Catarina (SC)</option>
-              <option value="SP">São Paulo (SP)</option>
-              <option value="SE">Sergipe (SE)</option>
-              <option value="TO">Tocantins (TO)</option>
-            </select>
+            <CepInput type="text" placeholder="CEP" />
+            <StreetInput type="text" placeholder="Rua" />
+            <div>
+              <NumberInput type="text" placeholder="Número" />
+              <ComplementInput type="text" placeholder="Complemento" />
+            </div>
+            <div>
+              <BairroInput type="text" placeholder="Bairro" />
+              <CityInput type="text" placeholder="Cidade" />
+              <UFSelect name="estado">
+                <option value="" disabled selected>
+                  UF
+                </option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </UFSelect>
+            </div>
           </FormContainer>
         </main>
       </MainContainer>
@@ -98,7 +138,7 @@ export default function Checkout() {
         <h3>Cafés selecionados</h3>
 
         <ListProducts>
-          {products.map((product) => (
+          {items.map((product) => (
             <CartType key={product.id}>
               <img src={product.image} alt={product.name} />
 
@@ -106,9 +146,9 @@ export default function Checkout() {
                 <p>{product.name}</p>
 
                 <div>
-                  <AddOrDecrementButton />
+                  <AddOrDecrementButton data={product} />
 
-                  <ButtonRemoveItem>
+                  <ButtonRemoveItem onClick={() => handleDelete(product.id)}>
                     <FiTrash2 />
                     <p>Remover</p>
                   </ButtonRemoveItem>
@@ -121,7 +161,7 @@ export default function Checkout() {
           <ItemsTotal>
             <TotalDefault>
               <p>Total de itens</p>
-              <span>R$ 29,90</span>
+              <span>{cartTotalValue}</span>
             </TotalDefault>
             <TotalDefault>
               <p>Entrega</p>
@@ -129,7 +169,7 @@ export default function Checkout() {
             </TotalDefault>
             <Total>
               <p>Total</p>
-              <span>R$ 29,90</span>
+              <span>{cartTotalWithDelivery}</span>
             </Total>
           </ItemsTotal>
           <ConfirmButton>Confirmar pedido</ConfirmButton>

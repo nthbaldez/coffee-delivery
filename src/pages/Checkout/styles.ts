@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  /* justify-content: center; */
   flex-direction: column;
   width: 100%;
   border-radius: 6px;
@@ -61,6 +60,7 @@ export const HeaderMain = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 2px;
 
     p {
       color: ${(props) => props.theme['gray-800']};
@@ -81,8 +81,67 @@ export const HeaderMain = styled.div`
 `
 
 export const FormContainer = styled.form`
+  margin-top: 32px;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 1rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+`
+
+const BaseInput = styled.input`
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  background: ${(props) => props.theme['gray-300']};
+  border: 1px solid ${(props) => props.theme['gray-400']};
+`
+
+export const CepInput = styled(BaseInput)`
+  width: 200px;
+`
+
+export const StreetInput = styled(BaseInput)`
+  width: 100%;
+`
+
+export const NumberInput = styled(BaseInput)`
+  width: 200px;
+`
+
+export const ComplementInput = styled(BaseInput)`
+  width: 100%;
+`
+
+export const BairroInput = styled(BaseInput)`
+  width: 200px;
+`
+export const CityInput = styled(BaseInput)`
+  width: 100%;
+`
+export const UFSelect = styled.select`
+  display: flex;
+  width: 70px;
+  padding: 12px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  background: ${(props) => props.theme['gray-300']};
+  border: 1px solid ${(props) => props.theme['gray-400']};
+
+  option {
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
 `
 
 export const ListProducts = styled.div`

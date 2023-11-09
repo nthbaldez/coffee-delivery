@@ -22,8 +22,7 @@ export default function ProductCard({
   types,
 }: CoffeeProps) {
   const priceFormatted = formatPrice(price)
-
-  console.log(types)
+  const data = { id, name, description, price, image, types }
 
   return (
     <Card>
@@ -42,7 +41,7 @@ export default function ProductCard({
           <span>{priceFormatted}</span>
         </p>
 
-        <AddOrDecrementButton />
+        <AddOrDecrementButton data={data} />
 
         <button>
           <ShoppingCart size={32} weight="fill" color="white" />
