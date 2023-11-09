@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   width: 100%;
   border-radius: 6px;
@@ -207,5 +207,25 @@ export const Total = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 130%;
+  }
+`
+
+export const ConfirmButton = styled.button`
+  width: 100%;
+  display: flex;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  border-radius: 6px;
+  background: ${(props) => props.theme['yellow-500']};
+  border: none;
+
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme['yellow-700']};
   }
 `

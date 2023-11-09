@@ -1,6 +1,5 @@
 import { formatPrice } from '../../utils/formatPrice'
 import AddOrDecrementButton from '../Home/components/ProductCard/AddOrDecrementButton'
-import { ConfirmButton } from '../Home/components/ProductCard/AddOrDecrementButton/styles'
 import {
   CoffeeSelectionContainer,
   MainContainer,
@@ -14,6 +13,7 @@ import {
   ItemsTotal,
   Total,
   TotalDefault,
+  ConfirmButton,
 } from './styles'
 
 import { FiTrash2 } from 'react-icons/fi'
