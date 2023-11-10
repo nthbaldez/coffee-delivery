@@ -1,49 +1,68 @@
-import AddOrDecrementButton from './AddOrDecrementButton'
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 
 import { ShoppingCart } from 'phosphor-react'
-import { Card } from './styles'
-import { formatPrice } from '../../../../utils/formatPrice'
+import { AddOrDecrementButtonContainer, Card } from './styles'
+import { useEffect, useState } from 'react'
 
 type CoffeeProps = {
   id: string
   name: string
   description: string
   price: number
+  priceFormatted: string
   image: string
   types: string[]
+  amount: number
+}
+
+interface ProductCardProps {
+  addProduct: (id: string, amount: number) => void
+  product: CoffeeProps
+  itemsAmount: number
 }
 
 export default function ProductCard({
-  id,
-  name,
-  description,
-  price,
-  image,
-  types,
-}: CoffeeProps) {
-  const priceFormatted = formatPrice(price)
-  const data = { id, name, description, price, image, types }
+  product,
+  addProduct,
+  itemsAmount,
+}: ProductCardProps) {
+  const [quantity, setQuantity] = useState(0)
 
+  useEffect(() => {
+    setQuantity(itemsAmount)
+  }, [itemsAmount])
+
+  function handleAddProduct(id: string, amount: number) {
+    addProduct(id, amount)
+  }
   return (
     <Card>
-      <img src={image} alt={name} />
+      <img src={product.image} alt={product.name} />
 
       <div>
-        {types.map((type, index) => (
+        {product.types.map((type, index) => (
           <span key={index}>{type}</span>
         ))}
       </div>
-      <h3>{name}</h3>
-      <p>{description}</p>
+      <h3>{product.name}</h3>
+      <p>{product.description}</p>
 
       <footer>
         <p>
-          <span>{priceFormatted}</span>
+          <span>{product.priceFormatted}</span>
         </p>
 
-        <AddOrDecrementButton data={data} />
+        <AddOrDecrementButtonContainer>
+          <button id="decrement">
+            <AiOutlineMinus />
+          </button>
+          <p>{quantity}</p>
+          <button id="increment">
+            <AiOutlinePlus />
+          </button>
+        </AddOrDecrementButtonContainer>
 
-        <button>
+        <button onClick={() => handleAddProduct(product.id, quantity)}>
           <ShoppingCart size={32} weight="fill" color="white" />
         </button>
       </footer>

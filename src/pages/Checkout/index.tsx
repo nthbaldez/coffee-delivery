@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
 import { formatPrice } from '../../utils/formatPrice'
-import AddOrDecrementButton from '../Home/components/ProductCard/AddOrDecrementButton'
 import {
   CoffeeSelectionContainer,
   MainContainer,
@@ -22,53 +20,41 @@ import {
   BairroInput,
   CityInput,
   UFSelect,
+  AddOrDecrementButtonContainer,
 } from './styles'
 
 import { FiTrash2 } from 'react-icons/fi'
-import useLocalStorage from '../../hooks/useLocalStorage'
-
-interface Product {
-  name: string
-  price: number
-  description: string
-  id: string
-  image: string
-  types: string[]
-}
-
-interface ProductInCart extends Product {
-  quantity: number
-}
+import { Product } from '../../types'
+import { useCart } from '../../hooks/useCart'
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 
 export default function Checkout() {
-  const { value, updateLocalStorage } = useLocalStorage<ProductInCart[]>(
-    'cart-items',
-    [],
-  )
+  const { cart, removeProduct, updateProductAmount } = useCart()
 
-  const [items, setItems] = useState<ProductInCart[]>([])
+  const cartFormatted = cart.map((product: Product) => ({
+    ...product,
+    priceFormatted: formatPrice(product.price),
+    subTotal: formatPrice(product.price * product.amount),
+  }))
 
-  const calculateTotalValue = (items: ProductInCart[]) => {
-    return items.reduce(
-      (total, item) => (total += item.price * item.quantity),
-      0,
-    )
+  const total = cartFormatted.reduce((sumTotal, product) => {
+    return sumTotal + product.price * product.amount
+  }, 0)
+
+  const totalFormatted = formatPrice(total)
+  const deliveryFee = 3500
+  const cartTotalWithDelivery = formatPrice(total + deliveryFee)
+
+  function handleProductIncrement(product: Product) {
+    updateProductAmount({ productId: product.id, amount: product.amount + 1 })
   }
 
-  useEffect(() => {
-    setItems(value)
-  }, [value])
+  function handleProductDecrement(product: Product) {
+    updateProductAmount({ productId: product.id, amount: product.amount - 1 })
+  }
 
-  const cartTotalValue = formatPrice(calculateTotalValue(value))
-  const deliveryFee = 3500
-  const cartTotalWithDelivery = formatPrice(
-    calculateTotalValue(value) + deliveryFee,
-  )
-
-  function handleDelete(id: string) {
-    const itemsList = items.filter((item) => item.id !== id)
-    updateLocalStorage(itemsList)
-    setItems(itemsList)
+  function handleRemoveProduct(productId: string) {
+    removeProduct(productId)
   }
 
   return (
@@ -138,7 +124,7 @@ export default function Checkout() {
         <h3>Cafés selecionados</h3>
 
         <ListProducts>
-          {items.map((product) => (
+          {cartFormatted.map((product) => (
             <CartType key={product.id}>
               <img src={product.image} alt={product.name} />
 
@@ -146,9 +132,25 @@ export default function Checkout() {
                 <p>{product.name}</p>
 
                 <div>
-                  <AddOrDecrementButton data={product} />
+                  <AddOrDecrementButtonContainer>
+                    <button
+                      id="decrement"
+                      onClick={() => handleProductDecrement(product)}
+                    >
+                      <AiOutlineMinus />
+                    </button>
+                    <p>{product.amount}</p>
+                    <button
+                      id="increment"
+                      onClick={() => handleProductIncrement(product)}
+                    >
+                      <AiOutlinePlus />
+                    </button>
+                  </AddOrDecrementButtonContainer>
 
-                  <ButtonRemoveItem onClick={() => handleDelete(product.id)}>
+                  <ButtonRemoveItem
+                    onClick={() => handleRemoveProduct(product.id)}
+                  >
                     <FiTrash2 />
                     <p>Remover</p>
                   </ButtonRemoveItem>
@@ -161,7 +163,7 @@ export default function Checkout() {
           <ItemsTotal>
             <TotalDefault>
               <p>Total de itens</p>
-              <span>{cartTotalValue}</span>
+              <span>{totalFormatted}</span>
             </TotalDefault>
             <TotalDefault>
               <p>Entrega</p>
