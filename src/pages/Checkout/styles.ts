@@ -328,3 +328,87 @@ export const AddOrDecrementButtonContainer = styled.div`
     line-height: 130%;
   }
 `
+
+export const PaymentContainer = styled.div`
+  margin-top: 12px;
+  display: flex;
+  padding: 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+  background: ${(props) => props.theme['gray-200']};
+  width: 100%;
+  border-radius: 6px;
+`
+
+export const HeaderPaymentContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+
+    p {
+      color: ${(props) => props.theme['gray-800']};
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+    }
+
+    span {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      color: ${(props) => props.theme['gray-700']};
+    }
+  }
+`
+
+export const PaymentList = styled.div`
+  ul {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+  }
+`
+
+interface FilterLIProps {
+  selected: boolean
+}
+
+export const LiStyle = styled.li<FilterLIProps>`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 180px;
+  flex: 1 1 0;
+  background: ${(props) =>
+    props.selected ? props.theme['purple-200'] : props.theme['gray-400']};
+  border: ${(props) =>
+    props.selected ? `1px solid ${props.theme['purple-600']}` : 'none'};
+  padding: 16px;
+  list-style: none;
+  border-radius: 6px;
+
+  color: ${(props) => props.theme['gray-700']};
+
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 19.2px */
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme['gray-500']};
+  }
+`

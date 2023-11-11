@@ -88,9 +88,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     )
 
     if (productToBeUpdated) {
-      productToBeUpdated.amount = amount
-      setCart(updatedCart)
-      setItem(updatedCart)
+      if (amount === 0) {
+        removeProduct(productId)
+      } else {
+        productToBeUpdated.amount = amount
+        setCart(updatedCart)
+        setItem(updatedCart)
+      }
     }
   }
 

@@ -21,15 +21,25 @@ import {
   CityInput,
   UFSelect,
   AddOrDecrementButtonContainer,
+  PaymentContainer,
+  HeaderPaymentContainer,
+  PaymentList,
+  LiStyle,
 } from './styles'
 
 import { FiTrash2 } from 'react-icons/fi'
 import { Product } from '../../types'
 import { useCart } from '../../hooks/useCart'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import { usePayment } from '../../hooks/usePayment'
+import { ChangeEvent, SyntheticEvent, useState } from 'react'
 
 export default function Checkout() {
   const { cart, removeProduct, updateProductAmount } = useCart()
+  const { address, setAddress, paymentType, setPaymentType } = usePayment()
+
+  const [addressForm, setAddressForm] = useState('')
+  const [numberAddress, setNumberAddress] = useState('')
 
   const cartFormatted = cart.map((product: Product) => ({
     ...product,
@@ -53,13 +63,37 @@ export default function Checkout() {
     removeProduct(productId)
   }
 
+  function handleChangePaymentType(type: string) {
+    setPaymentType(type)
+  }
+
+  function handleAddress(e: ChangeEvent<HTMLInputElement>) {
+    setAddressForm(e.target.value)
+  }
+
+  function handleNumberAddress(e: ChangeEvent<HTMLInputElement>) {
+    setNumberAddress(e.target.value)
+  }
+
+  function handleSubmit(e: ChangeEvent<HTMLInputElement>) {
+    if (addressForm === '' || numberAddress === '') {
+      alert('Preencha os dados!')
+      e.preventDefault()
+      return
+    }
+    const completeAddress = `${addressForm}, ${numberAddress}`
+
+    setAddress(completeAddress)
+    console.log('chegou aqui')
+  }
+
   return (
     <Wrapper>
       <MainContainer>
         <header>
           <h3>Complete seu pedido</h3>
         </header>
-
+        <p>{address}</p>
         <main>
           <HeaderMain>
             <img src="/public/icons/icon.svg" alt="" />
@@ -69,11 +103,19 @@ export default function Checkout() {
             </div>
           </HeaderMain>
 
-          <FormContainer action="">
+          <FormContainer action="submit">
             <CepInput type="text" placeholder="CEP" />
-            <StreetInput type="text" placeholder="Rua" />
+            <StreetInput
+              type="text"
+              placeholder="Rua"
+              onBlur={(e) => handleAddress(e)}
+            />
             <div>
-              <NumberInput type="text" placeholder="Número" />
+              <NumberInput
+                type="text"
+                placeholder="Número"
+                onBlur={(e) => handleNumberAddress(e)}
+              />
               <ComplementInput type="text" placeholder="Complemento" />
             </div>
             <div>
@@ -114,6 +156,47 @@ export default function Checkout() {
             </div>
           </FormContainer>
         </main>
+
+        <PaymentContainer>
+          <HeaderPaymentContainer>
+            <img src="/public/icons/currency.svg" alt="" />
+            <div>
+              <p>Pagamento</p>
+              <span>
+                O pagamento é feito na entrega. Escolha a forma que deseja
+                pagar.
+              </span>
+            </div>
+          </HeaderPaymentContainer>
+
+          <PaymentList>
+            <ul>
+              <LiStyle
+                selected={paymentType === 'credit'}
+                onClick={() => handleChangePaymentType('credit')}
+              >
+                <img src="/public/icons/cartao-credito.svg" alt="" />
+                Cartão de Crédito
+              </LiStyle>
+
+              <LiStyle
+                selected={paymentType === 'debit'}
+                onClick={() => handleChangePaymentType('debit')}
+              >
+                <img src="/public/icons/cartao-debito.svg" alt="" />
+                Cartão de Débito
+              </LiStyle>
+
+              <LiStyle
+                selected={paymentType === 'pix'}
+                onClick={() => handleChangePaymentType('pix')}
+              >
+                <img src="/public/icons/dinheiro.svg" alt="" />
+                Pix
+              </LiStyle>
+            </ul>
+          </PaymentList>
+        </PaymentContainer>
       </MainContainer>
 
       <CoffeeSelectionContainer>
@@ -174,7 +257,9 @@ export default function Checkout() {
               <span>{cartTotalWithDelivery}</span>
             </Total>
           </ItemsTotal>
-          <ConfirmButton>Confirmar pedido</ConfirmButton>
+          <ConfirmButton type="submit" onClick={(e) => handleSubmit(e)}>
+            Confirmar pedido
+          </ConfirmButton>
         </ListProducts>
       </CoffeeSelectionContainer>
     </Wrapper>
