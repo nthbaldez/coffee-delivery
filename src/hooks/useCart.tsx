@@ -79,8 +79,19 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   }
 
-  function updateProductAmount(productId: string, amount: number) {
+  async function updateProductAmount(productId: string, amount: number) {
     console.log(productId + ' ' + amount)
+
+    const updatedCart = [...cart]
+    const productToBeUpdated = updatedCart.find(
+      (product) => product.id === productId,
+    )
+
+    if (productToBeUpdated) {
+      productToBeUpdated.amount = amount
+      setCart(updatedCart)
+      setItem(updatedCart)
+    }
   }
 
   return (

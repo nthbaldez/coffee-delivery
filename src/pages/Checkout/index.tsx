@@ -132,7 +132,7 @@ export default function Checkout() {
                     <button
                       id="decrement"
                       onClick={() =>
-                        handleUpdateAmount(product.id, product.amount)
+                        handleUpdateAmount(product.id, product.amount - 1)
                       }
                     >
                       <AiOutlineMinus />
@@ -140,7 +140,9 @@ export default function Checkout() {
                     <p>{product.amount}</p>
                     <button
                       id="increment"
-                      // onClick={() => handleProductIncrement(product)}
+                      onClick={() =>
+                        handleUpdateAmount(product.id, product.amount + 1)
+                      }
                     >
                       <AiOutlinePlus />
                     </button>
