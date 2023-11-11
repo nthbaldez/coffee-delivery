@@ -8,16 +8,11 @@ interface CartProviderProps {
   children: ReactNode
 }
 
-interface UpdateProductAmount {
-  productId: string
-  amount: number
-}
-
 interface CartContextData {
   cart: Product[]
   addProduct: (productId: string, amount: number) => Promise<void>
   removeProduct: (productId: string) => void
-  updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void
+  updateProductAmount: (productId: string, amount: number) => void
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData)
@@ -84,29 +79,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   }
 
-  async function updateProductAmount({
-    productId,
-    amount,
-  }: UpdateProductAmount) {
-    try {
-      if (amount <= 0) {
-        throw Error()
-      }
-
-      const updatedCart = [...cart]
-      const productExists = updatedCart.find(
-        (product) => product.id === productId,
-      )
-
-      if (productExists) {
-        setCart(updatedCart)
-        setItem(updatedCart)
-      } else {
-        throw Error()
-      }
-    } catch {
-      toast.error('Erro na alteração de quantidade do produto')
-    }
+  function updateProductAmount(productId: string, amount: number) {
+    console.log(productId + ' ' + amount)
   }
 
   return (

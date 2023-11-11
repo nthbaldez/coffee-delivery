@@ -62,4 +62,3 @@ export const SpanContainer = styled.span<FeatureProps>`
   border-radius: 100%;
   background: ${(props) => props.theme[FEATURE_COLORS[props.featureColor]]};
 `
-export const ImageContainer = styled.div``

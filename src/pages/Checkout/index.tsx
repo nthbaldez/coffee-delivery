@@ -45,12 +45,8 @@ export default function Checkout() {
   const deliveryFee = 3500
   const cartTotalWithDelivery = formatPrice(total + deliveryFee)
 
-  function handleProductIncrement(product: Product) {
-    updateProductAmount({ productId: product.id, amount: product.amount + 1 })
-  }
-
-  function handleProductDecrement(product: Product) {
-    updateProductAmount({ productId: product.id, amount: product.amount - 1 })
+  function handleUpdateAmount(productId: string, amount: number) {
+    updateProductAmount(productId, amount)
   }
 
   function handleRemoveProduct(productId: string) {
@@ -135,14 +131,16 @@ export default function Checkout() {
                   <AddOrDecrementButtonContainer>
                     <button
                       id="decrement"
-                      onClick={() => handleProductDecrement(product)}
+                      onClick={() =>
+                        handleUpdateAmount(product.id, product.amount)
+                      }
                     >
                       <AiOutlineMinus />
                     </button>
                     <p>{product.amount}</p>
                     <button
                       id="increment"
-                      onClick={() => handleProductIncrement(product)}
+                      // onClick={() => handleProductIncrement(product)}
                     >
                       <AiOutlinePlus />
                     </button>

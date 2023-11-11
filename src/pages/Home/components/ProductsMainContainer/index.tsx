@@ -34,6 +34,8 @@ export default function ProductsMainContainer() {
     return newSumAmount
   }, {} as CartItemsAmount)
 
+  console.log(cartItemsAmount)
+
   useEffect(() => {
     async function loadProducts() {
       const response = await api.get<Product[]>('/products')
@@ -42,7 +44,6 @@ export default function ProductsMainContainer() {
         ...product,
         priceFormatted: formatPrice(product.price),
       }))
-      console.log(productsFormatted)
       setProducts(productsFormatted)
     }
 
