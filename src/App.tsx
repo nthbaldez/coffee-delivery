@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Router from './Router'
 import { CartProvider } from './hooks/useCart'
 import { PaymentContextProvider } from './hooks/usePayment'
+import { ToastContainer } from 'react-toastify'
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
             <Router />
           </BrowserRouter>
         </PaymentContextProvider>
+        <ToastContainer autoClose={3000} />
       </CartProvider>
     </ThemeProvider>
   )

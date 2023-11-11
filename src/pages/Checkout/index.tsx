@@ -27,14 +27,17 @@ import {
   LiStyle,
 } from './styles'
 
+import { useNavigate } from 'react-router'
 import { FiTrash2 } from 'react-icons/fi'
 import { Product } from '../../types'
 import { useCart } from '../../hooks/useCart'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { usePayment } from '../../hooks/usePayment'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function Checkout() {
+  const navigate = useNavigate()
   const { cart, removeProduct, updateProductAmount } = useCart()
   const { address, setAddress, paymentType, setPaymentType } = usePayment()
 
@@ -75,16 +78,16 @@ export default function Checkout() {
     setNumberAddress(e.target.value)
   }
 
-  function handleSubmit(e: ChangeEvent<HTMLInputElement>) {
+  function handleSubmit() {
     if (addressForm === '' || numberAddress === '') {
-      alert('Preencha os dados!')
-      e.preventDefault()
-      return
-    }
-    const completeAddress = `${addressForm}, ${numberAddress}`
+      toast.error('Preencha todos os dados')
+    } else {
+      const completeAddress = `${addressForm}, ${numberAddress}`
+      setAddress(completeAddress)
+      toast.success('Pedido finalizado com sucesso!')
 
-    setAddress(completeAddress)
-    console.log('chegou aqui')
+      setTimeout(() => navigate('/success'), 5000)
+    }
   }
 
   return (
@@ -257,7 +260,7 @@ export default function Checkout() {
               <span>{cartTotalWithDelivery}</span>
             </Total>
           </ItemsTotal>
-          <ConfirmButton type="submit" onClick={(e) => handleSubmit(e)}>
+          <ConfirmButton type="submit" onClick={handleSubmit}>
             Confirmar pedido
           </ConfirmButton>
         </ListProducts>
