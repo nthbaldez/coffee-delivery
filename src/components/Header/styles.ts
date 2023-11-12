@@ -38,7 +38,6 @@ export const MapAndCartContainer = styled.div`
 export const MapPinContainer = styled.div`
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
   gap: 0.5rem;
   background: ${(props) => props.theme['purple-200']};
 
@@ -51,4 +50,23 @@ export const MapPinContainer = styled.div`
   p {
     color: ${(props) => props.theme['purple-600']};
   }
+`
+
+export const CartButton = styled.div`
+  position: relative;
+  cursor: pointer;
+`
+
+export const CartCount = styled.span`
+  width: 17px;
+  height: 17px;
+  border-radius: 100%;
+  padding: 2px 5px;
+  font-size: 12px;
+  bottom: 35px;
+  right: -5px;
+  background: ${(props) => props.theme['yellow-700']};
+  position: absolute;
+  color: white;
+  margin-left: -10px;
 `

@@ -1,9 +1,19 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import Logo from '../../../public/logo.svg'
-import { HeaderContainer, MapAndCartContainer, MapPinContainer } from './styles'
+import {
+  CartButton,
+  CartCount,
+  HeaderContainer,
+  MapAndCartContainer,
+  MapPinContainer,
+} from './styles'
 import { NavLink } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 export default function Header() {
+  const { cart } = useCart()
+
+  console.log(cart.length)
   return (
     <HeaderContainer>
       <nav>
@@ -17,9 +27,12 @@ export default function Header() {
             <p>Porto Alegre, RS</p>
           </MapPinContainer>
 
-          <NavLink to="/checkout">
-            <ShoppingCart size={32} weight="fill" />
-          </NavLink>
+          <CartButton>
+            <NavLink to="/checkout">
+              <ShoppingCart size={32} weight="fill" />
+              {cart.length > 0 && <CartCount>{cart.length}</CartCount>}
+            </NavLink>
+          </CartButton>
         </MapAndCartContainer>
       </nav>
     </HeaderContainer>

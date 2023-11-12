@@ -39,7 +39,16 @@ import { toast } from 'react-toastify'
 export default function Checkout() {
   const navigate = useNavigate()
   const { cart, removeProduct, updateProductAmount } = useCart()
-  const { address, setAddress, paymentType, setPaymentType } = usePayment()
+  const {
+    address,
+    setAddress,
+    paymentType,
+    setPaymentType,
+    setCity,
+    setBairro,
+    setState,
+    setPaymentMethod,
+  } = usePayment()
 
   const [addressForm, setAddressForm] = useState('')
   const [numberAddress, setNumberAddress] = useState('')
@@ -68,6 +77,17 @@ export default function Checkout() {
 
   function handleChangePaymentType(type: string) {
     setPaymentType(type)
+
+    switch (type) {
+      case 'credit':
+        setPaymentMethod('Cartão de Crédito')
+        break
+      case 'debit':
+        setPaymentMethod('Cartão de Débito')
+        break
+      case 'pix':
+        setPaymentMethod('Pix')
+    }
   }
 
   function handleAddress(e: ChangeEvent<HTMLInputElement>) {
@@ -78,11 +98,24 @@ export default function Checkout() {
     setNumberAddress(e.target.value)
   }
 
+  function handleCityAddress(e: ChangeEvent<HTMLInputElement>) {
+    setCity(e.target.value)
+  }
+
+  function handleBairroAddess(e: ChangeEvent<HTMLInputElement>) {
+    setBairro(e.target.value)
+  }
+
+  function handleState(e: ChangeEvent<HTMLSelectElement>) {
+    setState(e.target.value)
+  }
+
   function handleSubmit() {
     if (addressForm === '' || numberAddress === '') {
       toast.error('Preencha todos os dados')
     } else {
       const completeAddress = `${addressForm}, ${numberAddress}`
+
       setAddress(completeAddress)
       toast.success('Pedido finalizado com sucesso!')
 
@@ -112,19 +145,31 @@ export default function Checkout() {
               type="text"
               placeholder="Rua"
               onBlur={(e) => handleAddress(e)}
+              required
             />
             <div>
               <NumberInput
                 type="text"
                 placeholder="Número"
                 onBlur={(e) => handleNumberAddress(e)}
+                required
               />
               <ComplementInput type="text" placeholder="Complemento" />
             </div>
             <div>
-              <BairroInput type="text" placeholder="Bairro" />
-              <CityInput type="text" placeholder="Cidade" />
-              <UFSelect name="estado">
+              <BairroInput
+                type="text"
+                placeholder="Bairro"
+                onBlur={(e) => handleBairroAddess(e)}
+                required
+              />
+              <CityInput
+                type="text"
+                placeholder="Cidade"
+                onBlur={(e) => handleCityAddress(e)}
+                required
+              />
+              <UFSelect name="estado" onBlur={(e) => handleState(e)}>
                 <option value="" disabled selected>
                   UF
                 </option>

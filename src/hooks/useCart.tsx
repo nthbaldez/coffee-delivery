@@ -41,7 +41,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         : 0
 
       if (productAlreadyExists) {
-        productAlreadyExists.amount = currentAmount + amount
+        productAlreadyExists.amount = currentAmount
       } else {
         const product = await api.get(`/products/${productId}`)
 

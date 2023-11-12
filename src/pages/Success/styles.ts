@@ -51,9 +51,36 @@ export const InfoContainer = styled.div`
   align-items: flex-start;
   gap: 32px;
   border-radius: 6px 36px;
+`
 
-  div {
-    img {
-    }
-  }
+export const ContainerSeparateInfo = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+`
+
+const FEATURE_COLORS = {
+  yellow: 'yellow-500',
+  orange: 'yellow-700',
+  purple: 'purple-600',
+} as const
+
+interface FeatureProps {
+  featureColor: keyof typeof FEATURE_COLORS
+}
+
+export const SpanCustomized = styled.span<FeatureProps>`
+  display: flex;
+  align-items: center;
+
+  padding: 8px;
+  border-radius: 100%;
+  background: ${(props) => props.theme[FEATURE_COLORS[props.featureColor]]};
+`
+
+export const AddressContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 2px;
 `
