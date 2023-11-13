@@ -37,7 +37,8 @@
 </p>
 
 <ul>
-  <li>Hook Cart: Hook para adicionar, remover ou atualizar a quantidade de produtos no carrinho, com isso, poder ser acessada as informações na página de finalização da compra</li>
+  <li>Hook useCart: Hook para adicionar, remover ou atualizar a quantidade de produtos no carrinho, com isso, podem ser acessada as informações na página de finalização da compra</li>
+  <li>Hook usePayment: Hook utilizado para lidar com as informações de endereço e forma de pagamento na página Success.</li>
   <li>Hook LocalStorage: Um hook para salvar os itens do carrinho no localstorage</li>
   <li>JSON Server e consumo da API: Foi criada uma Fake API que é consumida usando a biblioteca Axios. A API é chamada na página Home, no componente ProductsContainer. Dessa forma, a API é consumida de forma mais performática dentro da HomePage.</li>
 </ul>
