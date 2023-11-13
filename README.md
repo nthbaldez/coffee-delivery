@@ -1,27 +1,106 @@
-# React + TypeScript + Vite
+<h1 align="center" style="font-weight: bold;">Coffee Delivery</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+ <a href="#tech">Technologies</a> • 
+ <a href="#started">Getting Started</a> • 
+  <a href="#colab">Collaborators</a> •
+ <a href="#contribute">Contribute</a>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <b>Coffee Delivery E-commerce</b>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2 id="layout">🎨 Layout</h2>
 
-## Expanding the ESLint configuration
+<p align="center">
+  <img src="/public/homepage.png" alt="Homepage" width="400px">
+</p>
+<p align="center">
+  <img src="/public/listproducts.png" alt="Lista de produtos" width="400px">
+</p>
+<p align="center">
+  <img src="/public/checkout.png" alt="Preencher formulário de finalização da compra" width="400px">
+</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<h2 id="technologies">💻 Technologies</h2>
 
-- Configure the top-level `parserOptions` property like this:
+- React
+- Typescript
+- Styled-components
+- Hooks
+- Context API
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+<h2>Principais Features</h2>
+<p>
+  As principais features do projeto são:
+</p>
+
+<ul>
+  <li>Hook Cart: Hook para adicionar, remover ou atualizar a quantidade de produtos no carrinho, com isso, poder ser acessada as informações na página de finalização da compra</li>
+  <li>Hook LocalStorage: Um hook para salvar os itens do carrinho no localstorage</li>
+</ul>
+
+<h2 id="started">🚀 Getting started</h2>
+
+<h3>Prerequisites</h3>
+
+Here are the prerequisites to run this project:
+
+- [NodeJS](https://nodejs.org/en)
+- [Git](https://git-scm.com/downloads)
+
+<h3>Cloning</h3>
+
+How to clone this project
+
+```bash
+git clone https://github.com/nthbaldez/coffee-delivery.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<h3>Starting</h3>
+
+How to start your project
+
+```bash
+cd project-name
+npm install
+npm run dev
+```
+
+How to start the api for the project
+
+```bash
+cd api
+yarn start
+```
+
+<h2 id="colab">🤝 Collaborators</h2>
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/nthbaldez" width="100px;" alt="Nathan Baldez Developer Profile"/><br>
+        <sub>
+          <b>Nathan Baldez</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+<h2 id="contribute">📫 Contribute</h2>
+
+Here you will explain how other developers can contribute to your project. For example, explaining how can create their branches, which patterns to follow and how to open an pull request
+
+1. `git clone https://github.com/nthbaldez/petshop-e_commerce.git`
+2. `git checkout -b feature/NAME`
+3. Follow commit patterns
+4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
+
+<h3>Documentations that might help</h3>
+
+[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
+
+[💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)

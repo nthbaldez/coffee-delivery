@@ -1,4 +1,5 @@
 import { ShoppingCart, Timer } from 'phosphor-react'
+import { PiPackageFill, PiCoffeeFill } from 'react-icons/pi'
 import {
   DefinitionContainer,
   InfoContainer,
@@ -28,6 +29,16 @@ export default function Home() {
                 Compra simples e segura
               </div>
             </div>
+
+            <div>
+              <div>
+                <SpanContainer featureColor="gray">
+                  <PiPackageFill size={16} weight="fill" color="white" />
+                </SpanContainer>
+                Embalagem mantém o café intacto
+              </div>
+            </div>
+
             <div>
               <div>
                 <SpanContainer featureColor="yellow">
@@ -36,18 +47,11 @@ export default function Home() {
                 Entrega rápida e rastreada
               </div>
             </div>
-            <div>
-              <div>
-                <SpanContainer featureColor="gray">
-                  <Timer size={16} weight="fill" color="white" />
-                </SpanContainer>
-                Embalagem mantém o café intacto
-              </div>
-            </div>
+
             <div>
               <div>
                 <SpanContainer featureColor="purple">
-                  <Timer size={16} weight="fill" color="white" />
+                  <PiCoffeeFill size={16} weight="fill" color="white" />
                 </SpanContainer>
                 O café chega fresquinho até você
               </div>
