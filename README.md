@@ -96,7 +96,7 @@ npm start
 
 Here you will explain how other developers can contribute to your project. For example, explaining how can create their branches, which patterns to follow and how to open an pull request
 
-1. `git clone https://github.com/nthbaldez/petshop-e_commerce.git`
+1. `git clone https://github.com/nthbaldez/coffee-delivery.git`
 2. `git checkout -b feature/NAME`
 3. Follow commit patterns
 4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
