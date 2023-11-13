@@ -39,6 +39,7 @@
 <ul>
   <li>Hook Cart: Hook para adicionar, remover ou atualizar a quantidade de produtos no carrinho, com isso, poder ser acessada as informações na página de finalização da compra</li>
   <li>Hook LocalStorage: Um hook para salvar os itens do carrinho no localstorage</li>
+  <li>JSON Server e consumo da API: Foi criada uma Fake API que é consumida usando a biblioteca Axios. A API é chamada na página Home, no componente ProductsContainer. Dessa forma, a API é consumida de forma mais performática dentro da HomePage.</li>
 </ul>
 
 <h2 id="started">🚀 Getting started</h2>
@@ -72,7 +73,7 @@ How to start the api for the project
 
 ```bash
 cd api
-yarn start
+npm start
 ```
 
 <h2 id="colab">🤝 Collaborators</h2>
