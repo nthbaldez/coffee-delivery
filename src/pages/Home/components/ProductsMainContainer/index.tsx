@@ -34,11 +34,12 @@ export default function ProductsMainContainer() {
     return newSumAmount
   }, {} as CartItemsAmount)
 
-  console.log(cartItemsAmount)
-
   useEffect(() => {
+    const controller = new AbortController()
     async function loadProducts() {
-      const response = await api.get<Product[]>('/products')
+      const response = await api.get<Product[]>('/products', {
+        signal: controller.signal,
+      })
 
       const productsFormatted = response.data.map((product) => ({
         ...product,
@@ -48,6 +49,8 @@ export default function ProductsMainContainer() {
     }
 
     loadProducts()
+
+    return () => controller.abort()
   }, [])
 
   return (
